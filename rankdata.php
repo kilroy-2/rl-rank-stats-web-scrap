@@ -14,22 +14,23 @@
 		
 		
 				'name' => '',
-				'1v1' => array(0, 100),
-				'2v2' => array(0, 100),
-				'3v3' => array(0, 100),
-				'Solo 3v3' => array(0, 100),
-				'Hoops' => array(0, 100),
-				'Rumble' => array(0, 100),
-				'Dropshot' => array(0, 100),
-				'Snowday' => array(0, 100),
+				'SeasonReward' => array(0, 0), // Level, Wins
+				'1v1' => array(0, 100), // rankNumber, MMR
+				'2v2' => array(0, 100), // rankNumber, MMR
+				'3v3' => array(0, 100), // rankNumber, MMR
+				'Solo 3v3' => array(0, 100), // rankNumber, MMR
+				'Hoops' => array(0, 100), // rankNumber, MMR
+				'Rumble' => array(0, 100), // rankNumber, MMR
+				'Dropshot' => array(0, 100), // rankNumber, MMR
+				'Snowday' => array(0, 100), // rankNumber, MMR
 
-				'Wins' => '0',
-				'Goals' => '0',
-				'Saves' => '0',
-				'Assists' => '0',
-				'Shots' => '0',
-				'MVPs' => '0',
-				'GoalShotRatio' => '0'
+				'Wins' => 0,
+				'Goals' => 0,
+				'Saves' => 0,
+				'Assists' => 0,
+				'Shots' => 0,
+				'MVPs' => 0,
+				'GoalShotRatio' => 0.0
 	);
 
 	if (!empty($_GET['user'])) { // is user parameter given 
@@ -41,7 +42,7 @@
 
 
 	// valid platforms
-	$platforms = array('ps'=>1, 'steam'=>1, 'xbox'=>1); 
+	$platforms = array('psn'=>1, 'steam'=>1, 'xbox'=>1); 
 
 
 	// no username or too long username
@@ -60,60 +61,48 @@
 
 
 
-	$RL_tracker = @file_get_contents('https://rocketleague.tracker.network/profile/'.$plat.'/'.$user); // get html code
+	$RL_tracker = @file_get_contents('https://rocketleague.tracker.network/rocket-league/profile/'.$plat.'/'.$user.'/overview'); // get html code
 
-	preg_match_all("#addPlayer\(.+?, '(.+?)',.+?\)#is", $RL_tracker, $name); // get player name in javascript code
-	preg_match_all("/playlist-tracking'\)\.highcharts\((.+?)\)\;/is", $RL_tracker, $first); // first = rank numbers and playlistnames in javascript code
-	preg_match_all("/playlist-tracking-rating'\)\.highcharts\((.+?)\)\;/is", $RL_tracker, $second); // second = playlistnames and points in javascript code
+	preg_match_all("/\"segments\":(.+?),\"availableSegments\"/is", $RL_tracker, $first); // first = json of stats and rank data
+	preg_match_all("/\"platformUserHandle\":\"(.+?)\",\"platformUserIdentifier\"/is", $RL_tracker, $name); // fetch name
+
+	$rankData['name'] = isset($name[1][0])? html_entity_decode($name[1][0], ENT_QUOTES | ENT_XML1, 'UTF-8') : $user; // set name
 
 
-	if (count($name[0])==0) { // checking for a existing username (if not, no ranks given)
-		$rankData['message'] = $user.' ('.$plat.') was not found on rocketleague.tracker.network';
+	if (count($first[0])==0) { // checking for existing data (if not, no ranks given)
+		$rankData['message'] = $user.' ('.$plat.') has no data on rocketleague.tracker.network yet.';
 		$rankData['code'] = '0';
 		die(json_encode($rankData));
 	}
 
-	$name = html_entity_decode($name[1][0], ENT_QUOTES | ENT_XML1, 'UTF-8'); // set name to found name
+	$data = json_decode($first[1][0], true); // decode to php array 
+	// or use the array $data instead of $rankData, ofc it has lots more info.
+	// var_dump($data); 
 
+	$rankData['SeasonReward'] = array($data[0]['stats']['seasonRewardLevel']['value'], $data[0]['stats']['seasonRewardWins']['value']);
+	$rankData['Wins'] = $data[0]['stats']['wins']['value'];
+	$rankData['Goals'] = $data[0]['stats']['goals']['value'];
+	$rankData['MVPs'] = $data[0]['stats']['mVPs']['value'];
+	$rankData['Saves'] = $data[0]['stats']['saves']['value'];
+	$rankData['Assists'] = $data[0]['stats']['assists']['value'];
+	$rankData['Shots'] = $data[0]['stats']['shots']['value'];
+	$rankData['GoalShotRatio'] = $data[0]['stats']['goalShotRatio']['value'];
 
-	preg_match_all("/name: '(.+?)'/", $first[1][0], $playlists); // get playlist names
-	preg_match_all("/data: (\[.*?\])/", $first[1][0], $rankLevel); // get data(rank) of playlist names
-	preg_match_all("/<div class=\"value\" data-stat=\"(Wins|Goals|Saves|Assists|Shots|MVPs|GoalShotRatio)\">\s*(.+?)\s*<\/div>/is", $RL_tracker, $stats); // get stats in html code
-
-
-	if (count($rankLevel[0])==0) { // check if ranks exists
-		$rankData['message'] = $name.' ('.$plat.') has no ranks yet.';
-		$rankData['code'] = '0';
-		die(json_encode($rankData));
+	if(count($data) > 1 ) { // not sure if consistent yet, maybe needs some revamp
+		$rankData['1v1'] = array($data[2]['stats']['tier']['value'], $data[2]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['2v2'] = array($data[3]['stats']['tier']['value'], $data[3]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['Solo 3v3'] = array($data[4]['stats']['tier']['value'], $data[4]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['3v3'] = array($data[5]['stats']['tier']['value'], $data[5]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['Hoops'] = array($data[6]['stats']['tier']['value'], $data[6]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['Rumble'] = array($data[7]['stats']['tier']['value'], $data[7]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['Dropshot'] = array($data[8]['stats']['tier']['value'], $data[8]['stats']['rating']['value']); // rankNumber, MMR
+		$rankData['Snowday'] = array($data[9]['stats']['tier']['value'], $data[9]['stats']['rating']['value']); // rankNumber, MMR
 	}
 
-
-	$playlistNames = array('Ranked Duel 1v1'=>'1v1', 'Ranked Doubles 2v2'=>'2v2', 'Ranked Solo Standard 3v3'=>'Solo 3v3', 'Ranked Standard 3v3'=>'3v3', 'Hoops' => 'Hoops', 'Rumble' => 'Rumble', 'Dropshot' => 'Dropshot', 'Snowday' => 'Snowday'); // array of short formatted playlist names
+	$rewardLevels = array('Unranked', 'Bronze', 'Silver', 'Platinum', 'Diamond', 'Champion', 'Grand Champion'); // array of all possible reward levels (bottom up)
 
 	$rankNames = array('Unranked', 'Bronze I', 'Bronze II', 'Bronze III', 'Silver I', 'Silver II', 'Silver III', 'Gold I', 'Gold II', 'Gold III', 'Platinum I', 'Platinum II', 'Platinum III', 'Diamond I', 'Diamond II', 'Diamond III', 'Champion I', 'Champion II', 'Champion III', 'Grand Champion'); // array of all possible rank names (bottom up)
 
-	
-	$rankData['name'] = $name; // update data in array
-
-	if(count($stats)>0) { // iterate through all given stats
-		for($i=0; $i < count($stats[1]); $i++){
-			$rankData[$stats[1][$i]] = $stats[2][$i]; // update data in array
-		}
-	}
-
-	for($i=0; $i < count($rankLevel[1]); $i++) { // iterate through all given playlists 
-
-		$jsonArray = json_decode($rankLevel[1][$i]); // format javascript array to php array
-		$rankNumber = array_pop($jsonArray); // get last element
-
-		preg_match_all("/name: '".$playlists[1][$i]."', data: (\[.+?\])/", $second[1][0], $rankMMR); // get MMR history of current playlist
-
-		if(count($rankMMR[1])!=0) { // if has history
-			$jsonMMR = json_decode($rankMMR[1][0]); // format javascript array to php array 
-			$mmr = array_pop($jsonMMR); // get last element (last MMR in history)
-			$rankData[$playlistNames[$playlists[1][$i]]] = array($rankNumber, $mmr); // update data in array
-		}
-	}
 
 	echo json_encode($rankData);
 
