@@ -66,7 +66,7 @@
 	preg_match_all("/\"segments\":(.+?),\"availableSegments\"/is", $RL_tracker, $first); // first = json of stats and rank data
 	preg_match_all("/\"platformUserHandle\":\"(.+?)\",\"platformUserIdentifier\"/is", $RL_tracker, $name); // fetch name
 
-	$rankData['name'] = isset($name[1][0])? html_entity_decode($name[1][0], ENT_QUOTES | ENT_XML1, 'UTF-8') : $user; // set name
+	$rankData['name'] = isset($name[1][0]) ? html_entity_decode($name[1][0], ENT_QUOTES | ENT_XML1, 'UTF-8') : $user; // set name
 
 
 	if (count($first[0])==0) { // checking for existing data (if not, no ranks given)
@@ -99,7 +99,7 @@
 		$rankData['Snowday'] = array($data[9]['stats']['tier']['value'], $data[9]['stats']['rating']['value']); // rankNumber, MMR
 	}
 
-	$rewardLevels = array('Unranked', 'Bronze', 'Silver', 'Platinum', 'Diamond', 'Champion', 'Grand Champion'); // array of all possible reward levels (bottom up)
+	$rewardLevels = array('Unranked', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Champion', 'Grand Champion'); // array of all possible reward levels (bottom up)
 
 	$rankNames = array('Unranked', 'Bronze I', 'Bronze II', 'Bronze III', 'Silver I', 'Silver II', 'Silver III', 'Gold I', 'Gold II', 'Gold III', 'Platinum I', 'Platinum II', 'Platinum III', 'Diamond I', 'Diamond II', 'Diamond III', 'Champion I', 'Champion II', 'Champion III', 'Grand Champion'); // array of all possible rank names (bottom up)
 
