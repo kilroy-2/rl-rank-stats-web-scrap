@@ -14,4 +14,5 @@ Use the hyphen character for spaces.
 
 # More
 This script only outputs general and selected information that I find to be important. Of course theres way more that can be
-in the output. If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.
+in the output. If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
+Of course this can be used as an API running on your own server.
