@@ -4,6 +4,10 @@
 Script that scraps html code from https://rocketleague.tracker.network/  
 to get rank and stats data of a player in Rocket League. Output is json.
 
+The output is only general and selected information that I find to be important. Of course theres way more that can be
+in the output. If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
+Of course this can be used as an API running on your own server.
+
 You may need to ask for permission on rocketleague.tracker.network to scrap their site.
 
 # Usage
@@ -11,11 +15,6 @@ You may need to ask for permission on rocketleague.tracker.network to scrap thei
 
 Simply change **USERID** into your Steam profiles id, psn name, or xbox name, and **PLATFORM** into either steam, psn or xbox.  
 Use the hyphen character for spaces.  
-
-# More
-This script only outputs general and selected information that I find to be important. Of course theres way more that can be
-in the output. If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
-Of course this can be used as an API running on your own server.
 
 # Output example
 ```
