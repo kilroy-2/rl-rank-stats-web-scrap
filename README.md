@@ -16,7 +16,8 @@ You may need to ask for permission on rocketleague.tracker.network to scrap thei
 Simply change **USERID** into your Steam profiles id, psn name, or xbox name, and **PLATFORM** into either steam, psn or xbox.  
 Use the hyphen character for spaces.  
 
-# Output example
+# Example
+`rankdata.php?user=kilroy_2&platform=steam`
 ```
 {
   "message":"Success",
