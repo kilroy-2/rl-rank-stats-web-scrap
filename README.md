@@ -2,7 +2,7 @@
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/kilroy-2/rl-rank-stats-web-scrap) [![Ask Me Anything !](https://img.shields.io/badge/WRITTEN%20IN-PHP-787CB5.svg)](https://github.com/kilroy-2/rl-rank-stats-web-scrap)  
 
 Script that scraps html code from https://rocketleague.tracker.network/  
-to get rank and stats data of a player in Rocket League. Output is json.
+to get rank, tournament and stats data of a player in Rocket League. Output is json.
 
 The output is only general and selected information that I find to be important. Of course theres way more that can be
 in the output. If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
@@ -32,6 +32,7 @@ Use the hyphen character for spaces.
   "Rumble":[17,1080],
   "Dropshot":[0,976],
   "Snowday":[0,981],
+  "Tournament":[20,1719],
   "Wins":17362,
   "Goals":38898,
   "Saves":40845,
