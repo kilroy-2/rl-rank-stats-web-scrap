@@ -23,6 +23,7 @@
 				'Rumble' => array(0, 100), // rankNumber, MMR
 				'Dropshot' => array(0, 100), // rankNumber, MMR
 				'Snowday' => array(0, 100), // rankNumber, MMR
+				'Tournament' => array(0, 100), // rankNumber, MMR
 
 				'Wins' => 0,
 				'Goals' => 0,
@@ -88,7 +89,7 @@
 
 	$data = json_decode($first[1][0], true); // decode to php array 
 	// or use the array $data instead of $rankData, ofc it has lots more info.
-	//var_dump($data); 
+	// var_dump($data); 
 
 	$rankData['SeasonReward'] = array($data[0]['stats']['seasonRewardLevel']['value'], $data[0]['stats']['seasonRewardWins']['value']);
 	$rankData['Wins'] = $data[0]['stats']['wins']['value'];
@@ -99,7 +100,7 @@
 	$rankData['Shots'] = $data[0]['stats']['shots']['value'];
 	$rankData['GoalShotRatio'] = $data[0]['stats']['goalShotRatio']['value'];
 
-	$playlistNames = array('Ranked Duel 1v1'=>'1v1', 'Ranked Doubles 2v2'=>'2v2', 'Ranked Solo Standard 3v3'=>'Solo 3v3', 'Ranked Standard 3v3'=>'3v3', 'Hoops' => 'Hoops', 'Rumble' => 'Rumble', 'Dropshot' => 'Dropshot', 'Snowday' => 'Snowday'); // array of short formatted playlist names
+	$playlistNames = array('Ranked Duel 1v1'=>'1v1', 'Ranked Doubles 2v2'=>'2v2', 'Ranked Solo Standard 3v3'=>'Solo 3v3', 'Ranked Standard 3v3'=>'3v3', 'Hoops' => 'Hoops', 'Rumble' => 'Rumble', 'Dropshot' => 'Dropshot', 'Snowday' => 'Snowday', 'Tournament Matches' => 'Tournament'); // array of short formatted playlist names
 
 	if(count($data) > 1 ) { // not sure if consistent yet, maybe needs some revamp
 		foreach ($playlistNames as $key => $value) {
