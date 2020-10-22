@@ -48,13 +48,13 @@
 	if (!empty($_GET['user'])) { // is user parameter given 
 		$user = str_replace(array(' ', '%20'), array('-', '-') , strtolower($_GET['user'])); // set user the value of given parameter in lower case and replace spaces with hyphen 
 	}
-	if (!empty($_GET['plat'])) { // is plat parameter given
-		$plat = strtolower($_GET['plat']); // set plat the value of given parameter in lower case
+	if (!empty($_GET['platform'])) { // is plat parameter given
+		$plat = strtolower($_GET['platform']); // set plat the value of given parameter in lower case
 	}
 
 
 	// valid platforms
-	$platforms = array('psn'=>1, 'steam'=>1, 'xbox'=>1); 
+	$platforms = array('psn'=>1, 'steam'=>1, 'xbl'=>1); 
 
 
 	// no username or too long username
