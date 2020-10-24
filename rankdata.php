@@ -44,7 +44,7 @@
 
 
 	// valid platforms
-	$platforms = array('psn'=>1, 'steam'=>1, 'xbox'=>1); 
+	$platforms = array('psn'=>1, 'steam'=>1, 'xbl'=>1); 
 
 
 	// no username or too long username
