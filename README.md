@@ -4,8 +4,10 @@
 Script that scraps json code from https://api.tracker.gg/api/v2/rocket-league/  
 to get rank, tournament and stats data of a player in Rocket League. Output is json.
 
-The output is only general and selected information that I find to be important. Of course you can use the api from tracker.gg,  
-this is only a helper script for readability. If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
+The output is only general and selected information that I find to be important.  
+Of course you could simply use the api from tracker.gg.   
+This is only a helper script for readability.  
+If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
 Of course this can be used as an API running on your own server.
 
 You may need to ask for permission on rocketleague.tracker.network to scrap their site.
