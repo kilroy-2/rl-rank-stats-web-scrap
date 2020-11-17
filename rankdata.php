@@ -66,7 +66,7 @@
 	$RL_tracker = @file_get_contents('https://api.tracker.gg/api/v2/rocket-league/standard/profile/'.$plat.'/'.$user.'/'); // get html code
 
 	$data = json_decode($RL_tracker, true); // decode to php array 
-
+	// var_dump($data['data']);
 
 	if($data === NULL){
 		$rankData['message'] = $user.' ('.$plat.') has no data on rocketleague.tracker.network yet.';
@@ -77,9 +77,6 @@
 
 	$rankData['name'] = html_entity_decode($data['data']['platformInfo']['platformUserHandle'], ENT_QUOTES | ENT_XML1, 'UTF-8');
 
-	// decode to php array 
-	// or use the array $data instead of $rankData, ofc it has lots more info.
-	// var_dump($data['data']); 
 
 	$rankData['SeasonReward'] = array($data['data']['segments'][0]['stats']['seasonRewardLevel']['value'], $data['data']['segments'][0]['stats']['seasonRewardWins']['value']);
 	$rankData['Wins'] = $data['data']['segments'][0]['stats']['wins']['value'];
