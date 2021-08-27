@@ -1,7 +1,7 @@
 # rl-rank-stats-web-scrap
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/kilroy-2/rl-rank-stats-web-scrap) [![Ask Me Anything !](https://img.shields.io/badge/WRITTEN%20IN-PHP-787CB5.svg)](https://github.com/kilroy-2/rl-rank-stats-web-scrap)  
 
-Script that scraps json code from https://api.tracker.gg/api/v2/rocket-league/  
+Script that scraps json code from f.e. https://api.tracker.gg/api/v2/rocket-league/standard/profile/steam/kilroy_2  
 to get rank, tournament and stats data of a player in Rocket League. Output is json.
 
 This is only a helper script for readability.  
