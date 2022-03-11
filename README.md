@@ -15,7 +15,7 @@ You may need to ask for permission on rocketleague.tracker.network to scrap thei
 # Usage
 ```rankdata.php?user=USERID&platform=PLATFORM```  
 
-Simply change **USERID** into your Steam profiles id, psn name, or xbox name, and **PLATFORM** into either steam, psn or xbl.  
+Simply change **USERID** into your Steam profiles id, psn name, xbox name or epic id and **PLATFORM** into either steam, psn, xbl or epic.  
 Use the hyphen character for spaces.  
 
 # Example
