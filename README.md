@@ -10,7 +10,7 @@ Of course you could simply use the api from tracker.gg.
 If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
 Of course this can be used as an API running on your own server.
 
-You may need to ask for permission on rocketleague.tracker.network to scrap their site.
+**You need to ask for permission on rocketleague.tracker.network to scrap their site.**
 
 # Usage
 ```rankdata.php?user=USERID&platform=PLATFORM```  
