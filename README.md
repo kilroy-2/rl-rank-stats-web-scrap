@@ -1,6 +1,10 @@
+**IMPORTANT NOTICE**  
+Since 16th April 2022 you MUST ask for permission on rocketleague.tracker.network to scrap their site otherwise the script will not work!  
+
+
 # rl-rank-stats-web-scrap
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/kilroy-2/rl-rank-stats-web-scrap) [![Ask Me Anything !](https://img.shields.io/badge/WRITTEN%20IN-PHP-787CB5.svg)](https://github.com/kilroy-2/rl-rank-stats-web-scrap)  
-
+ 
 Script that scraps json code from f.e. https://api.tracker.gg/api/v2/rocket-league/standard/profile/steam/kilroy_2  
 to get rank, tournament and stats data of a player in Rocket League. Output is json.
 
@@ -10,7 +14,6 @@ Of course you could simply use the api from tracker.gg.
 If you want more, ```var_dump($data)``` and see the glorious amount of information you can access.  
 Of course this can be used as an API running on your own server.
 
-**You need to ask for permission on rocketleague.tracker.network to scrap their site.**
 
 # Usage
 ```rankdata.php?user=USERID&platform=PLATFORM```  
