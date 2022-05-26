@@ -1,4 +1,4 @@
-**IMPORTANT NOTICE**  
+# IMPORTANT NOTICE  
 Since 16th April 2022 you MUST ask for permission on rocketleague.tracker.network to scrap their site otherwise the script will not work!  
 
 
