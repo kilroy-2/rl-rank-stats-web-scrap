@@ -1,5 +1,7 @@
 # IMPORTANT NOTICE  
-Since 16th April 2022 you MUST ask for permission on rocketleague.tracker.network to scrap their site otherwise the script will not work!  
+Since April 2023 you can not use the api.tracker.gg/api/v2/rocket-league/ anymore. They protected their site with cloudflare. This script does not work anymore!  
+
+~Since 16th April 2022 you MUST ask for permission on rocketleague.tracker.network to scrap their site otherwise the script will not work!~  
 
 
 # rl-rank-stats-web-scrap
