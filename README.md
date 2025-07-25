@@ -1,5 +1,8 @@
 # IMPORTANT NOTICE  
-Since April 2023 you can not use the api.tracker.gg/api/v2/rocket-league/ anymore. They protected their site with cloudflare. This script does not work anymore!  
+Since April 2023 you can not use the api.tracker.gg/api/v2/rocket-league/ anymore. They protected their site with cloudflare. Simply scrapping it does not work anymore!  
+You can manually open the link in browser and return data or try pretend to be a legit browser requesting the api through [Selenium](https://www.selenium.dev/) to make it work! (But this is beyond my limits)  
+Mentionable new sources (not me): [RLTrack - Discord Bots](https://discord.bots.gg/bots/796342333222027274) 
+
 
 ~Since 16th April 2022 you MUST ask for permission on rocketleague.tracker.network to scrap their site otherwise the script will not work!~  
 
@@ -7,7 +10,7 @@ Since April 2023 you can not use the api.tracker.gg/api/v2/rocket-league/ anymor
 # rl-rank-stats-web-scrap
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/kilroy-2/rl-rank-stats-web-scrap) [![Ask Me Anything !](https://img.shields.io/badge/WRITTEN%20IN-PHP-787CB5.svg)](https://github.com/kilroy-2/rl-rank-stats-web-scrap)  
  
-Script that scraps json code from f.e. https://api.tracker.gg/api/v2/rocket-league/standard/profile/steam/kilroy_2  
+Script that scraps json code from f.e. https://api.tracker.gg/api/v2/rocket-league/standard/profile/steam/76561198061467276  
 to get rank, tournament and stats data of a player in Rocket League. Output is json.
 
 This is only a helper script for readability.  
